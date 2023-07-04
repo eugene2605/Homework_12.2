@@ -1,7 +1,11 @@
+import pytest
+
 from utils.dicts import get_val
 
-
-def test_get_val():
-    assert get_val({'кошка': 'cat', 'собака': 'dog'}, 'кошка') == 'cat'
-    assert get_val({'кошка': 'cat', 'собака': 'dog'}, 'собака') == 'dog'
-    assert get_val({'кошка': 'cat', 'собака': 'dog'}, 'хомяк') == 'animal'
+@pytest.fixture
+def dict_fix():
+    return {'кошка': 'cat', 'собака': 'dog'}
+def test_get_val(dict_fix):
+    assert get_val(dict_fix, 'кошка') == 'cat'
+    assert get_val(dict_fix, 'собака') == 'dog'
+    assert get_val(dict_fix, 'хомяк') == 'animal'
